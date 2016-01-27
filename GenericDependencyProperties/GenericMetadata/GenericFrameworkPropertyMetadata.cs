@@ -3,7 +3,7 @@
 namespace GenericDependencyProperties.GenericMetadata
 {
     public class GenericFrameworkPropertyMetadata<TProperty, TOwner> : GenericUIPropertyMetadata<TProperty, TOwner> 
-        where TOwner : DependencyObject
+        where TOwner : FrameworkElement
     {
         public override PropertyMetadata ToNonGeneric()
         {
