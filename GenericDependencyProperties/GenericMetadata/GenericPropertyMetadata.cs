@@ -1,14 +1,12 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using GenericDependencyProperties.GenericCallback;
 
 namespace GenericDependencyProperties.GenericMetadata
 {
-    public class GenericPropertyMetadata<TProperty, TOwner> : PropertyMetadata
+    public class GenericPropertyMetadata<TProperty, TOwner>
         where TOwner : DependencyObject
     {
         public GenericPropertyMetadata()
-            : base()
         {
         }
 
@@ -17,8 +15,8 @@ namespace GenericDependencyProperties.GenericMetadata
         /// </summary>
         /// <param name="defaultValue"></param>
         public GenericPropertyMetadata(TProperty defaultValue)
-            : base(defaultValue)
         {
+            this.DefaultValue = defaultValue;
         }
 
         /// <summary>
@@ -27,7 +25,7 @@ namespace GenericDependencyProperties.GenericMetadata
         /// <param name="defaultValue"></param>
         /// <param name="callback"></param>
         public GenericPropertyMetadata(TProperty defaultValue, GenericPropertyChangedCallback<TOwner, TProperty> callback)
-            : base(defaultValue)
+            : this(defaultValue)
         {
             this.PropertyChangedCallback = callback;
         }
@@ -52,7 +50,6 @@ namespace GenericDependencyProperties.GenericMetadata
         /// </summary>
         /// <param name="callback"></param>
         public GenericPropertyMetadata(GenericPropertyChangedCallback<TOwner, TProperty> callback)
-            :base()
         {
             this.PropertyChangedCallback = callback;
         }
@@ -60,42 +57,18 @@ namespace GenericDependencyProperties.GenericMetadata
         /// <summary>
         /// Gets or sets the default value of the dependency property.
         /// </summary>
-        public new TProperty DefaultValue
-        {
-            get
-            {
-                return (TProperty) base.DefaultValue;
-            }
-            set
-            {
-                base.DefaultValue = value;
-            }
-        }
+        public TProperty DefaultValue { get; set; }
 
-        // TODO: public object IsSealed not yet overwritten, is not changed!?
-        // Gets a value that determines whether the metadata has been applied to a property in some way, resulting in the immutable state of that metadata instance.
-        // public bool IsSealed {get; }
-
-        private GenericPropertyChangedCallback<TOwner, TProperty> genericChangeCallback;
+        // TODO: do we need some kind of sealing? it's never attached to anything itself, so not probably not necessary?
+        
         /// <summary>
         /// Gets or sets a reference to a PropertyChangedCallback implementation specified in this metadata.
         /// </summary>
-        /// TODO: use a generic PropertyChangedCallback that accepts 
-        public new GenericPropertyChangedCallback<TOwner, TProperty> PropertyChangedCallback
-        {
-            get
-            {
-                return this.genericChangeCallback;
-            }
-            set
-            {
-                this.genericChangeCallback = value;
-                base.PropertyChangedCallback = WrappedPropertyChangedCallback;
-            }
-        }
+        /// TODO: use a generic PropertyChangedCallback that accepts only the right types
+        public GenericPropertyChangedCallback<TOwner, TProperty> PropertyChangedCallback { get; set; }
 
 
-        private void WrappedPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        protected void WrappedPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var typedDependencyObject = dependencyObject as TOwner;
             var typedArgs = new DependencyPropertyChangedEventArgs<TProperty>(
@@ -103,50 +76,25 @@ namespace GenericDependencyProperties.GenericMetadata
                 (TProperty)dependencyPropertyChangedEventArgs.OldValue,
                 (TProperty)dependencyPropertyChangedEventArgs.NewValue);
 
-            this.genericChangeCallback(typedDependencyObject, typedArgs);
+            this.PropertyChangedCallback(typedDependencyObject, typedArgs);
         }
 
+        public GenericCoerceValueCallback<TOwner, TProperty> CoerceValueCallback { get; set; }
 
-
-        private GenericCoerceValueCallback<TOwner, TProperty> genericCoerceValueCallback;
-
-        public new GenericCoerceValueCallback<TOwner, TProperty> CoerceValueCallback
-        {
-            get
-            {
-                return this.genericCoerceValueCallback;
-            }
-            set
-            {
-                this.genericCoerceValueCallback = value;
-                base.CoerceValueCallback = WrappedCoerceValueCallback;
-            }
-        }
-
-        private object WrappedCoerceValueCallback(DependencyObject dependencyObject, object baseValue)
+        protected object WrappedCoerceValueCallback(DependencyObject dependencyObject, object baseValue)
         {
             var typedDependencyObject = dependencyObject as TOwner;
             var typedValue = (TProperty)baseValue;
 
-            return this.genericCoerceValueCallback(typedDependencyObject, typedValue);
+            return this.CoerceValueCallback(typedDependencyObject, typedValue);
         }
 
-        // <summary>
-        // //Merges this metadata with the base metadata.
-        // </summary>
-        //protected virtual void Merge(PropertyMetadata baseMetadata, DependencyProperty dp)
-        //{
-        //    base.Merge(baseMetadata, dp);
-        //}
-
-        /// <summary>
-        /// Called when this metadata has been applied to a property, which indicates that the metadata is being sealed.
-        /// </summary>
-        /// <param name="dp"></param>
-        /// <param name="targetType"></param>
-        protected virtual void OnApply(DependencyProperty dp, Type targetType)
+        public virtual PropertyMetadata ToNonGeneric()
         {
-            base.OnApply(dp, targetType);
+            return new PropertyMetadata(
+                this.DefaultValue, 
+                this.WrappedPropertyChangedCallback, 
+                this.WrappedCoerceValueCallback);
         }
     }
 }

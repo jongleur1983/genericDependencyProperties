@@ -47,7 +47,7 @@ namespace GenericDependencyProperties
                 name, 
                 typeof (TProperty), 
                 typeof (TOwner), 
-                metadata,
+                metadata.ToNonGeneric(),
                 validateValueCallback); // TODO: can we make validateValueCallback generic as well?
         }
         #endregion

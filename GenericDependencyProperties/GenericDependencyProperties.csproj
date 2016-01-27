@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows" />
@@ -45,8 +47,10 @@
     <Compile Include="GenericCallback\DependencyPropertyChangedEventArgs.cs" />
     <Compile Include="GenericCallback\GenericCoerceValueCallback.cs" />
     <Compile Include="GenericDependencyProperties.cs" />
+    <Compile Include="GenericMetadata\GenericFrameworkPropertyMetadata.cs" />
     <Compile Include="GenericMetadata\GenericPropertyMetadata.cs" />
     <Compile Include="GenericCallback\GenericPropertyChangedCallback.cs" />
+    <Compile Include="GenericMetadata\GenericUIPropertyMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
