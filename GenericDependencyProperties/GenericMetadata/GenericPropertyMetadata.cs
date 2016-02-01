@@ -70,13 +70,16 @@ namespace GenericDependencyProperties.GenericMetadata
 
         protected void WrappedPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var typedDependencyObject = dependencyObject as TOwner;
-            var typedArgs = new DependencyPropertyChangedEventArgs<TProperty>(
-                dependencyPropertyChangedEventArgs.Property,
-                (TProperty)dependencyPropertyChangedEventArgs.OldValue,
-                (TProperty)dependencyPropertyChangedEventArgs.NewValue);
+            if (this.PropertyChangedCallback != null)
+            {
+                var typedDependencyObject = dependencyObject as TOwner;
+                var typedArgs = new DependencyPropertyChangedEventArgs<TProperty>(
+                    dependencyPropertyChangedEventArgs.Property,
+                    (TProperty)dependencyPropertyChangedEventArgs.OldValue,
+                    (TProperty)dependencyPropertyChangedEventArgs.NewValue);
 
-            this.PropertyChangedCallback(typedDependencyObject, typedArgs);
+                this.PropertyChangedCallback(typedDependencyObject, typedArgs);
+            }
         }
 
         public GenericCoerceValueCallback<TOwner, TProperty> CoerceValueCallback { get; set; }
@@ -86,7 +89,16 @@ namespace GenericDependencyProperties.GenericMetadata
             var typedDependencyObject = dependencyObject as TOwner;
             var typedValue = (TProperty)baseValue;
 
-            return this.CoerceValueCallback(typedDependencyObject, typedValue);
+            // TODO is this the intended usage of the CoerceValueCallback?
+            if (this.CoerceValueCallback != null)
+            {
+                return this.CoerceValueCallback(typedDependencyObject, typedValue);
+            }
+            else
+            {
+                return typedValue;
+            }
+            
         }
 
         public virtual PropertyMetadata ToNonGeneric()
