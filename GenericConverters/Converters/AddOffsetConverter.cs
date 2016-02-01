@@ -2,15 +2,15 @@
 
 namespace GenericConverters.Converters
 {
-    public class AddOffsetConverter : GenericValueConverter<int, int, int>
+    public class AddOffsetConverter : GenericValueConverter<double, double, double>
     {
-        public override int Convert(int from, int parameter, CultureInfo culture)
+        public override double Convert(double from, double parameter, CultureInfo culture)
         {
             var offset = parameter;
             return from + offset;
         }
 
-        public override int ConvertBack(int value, int parameter, CultureInfo culture)
+        public override double ConvertBack(double value, double parameter, CultureInfo culture)
         {
             var offset = parameter;
             return value - offset;
