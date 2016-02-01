@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="GenericDependencyProperties.Examples.SampleUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:GenericConverters.Converters;assembly=GenericConverters"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:AddOffsetConverter x:Key="AddOffsetConverter" />
+        <converters:MultiplyConverter x:Key="MultiplyConverter" />
+        <system:Double x:Key="NegativeMargin">-40</system:Double>
+        <system:Double x:Key="Half">0.5</system:Double>
+    </UserControl.Resources>
+    <Canvas x:Name="ControlCanvas">
+        <Ellipse Fill="CornflowerBlue" 
+                 Stroke="{x:Null}"
+                 Canvas.Top="{Binding SatelliteRadius}"
+                 Canvas.Left="{Binding SatelliteRadius}"
+                 Width="{Binding ActualWidth, ElementName=ControlCanvas, Converter={StaticResource AddOffsetConverter}, ConverterParameter={StaticResource NegativeMargin}}" 
+                 Height="{Binding ActualHeight, ElementName=ControlCanvas, Converter={StaticResource AddOffsetConverter}, ConverterParameter={StaticResource NegativeMargin}}" />
+        <Ellipse Fill="Red" 
+                 Height="{Binding SatelliteRadius}"
+                 Width="{Binding SatelliteRadius}" 
+                 Canvas.Top="0"
+                 Canvas.Left="0">
+            <Ellipse.RenderTransform>
+                <RotateTransform CenterX="{Binding ActualWidth, ElementName=ControlCanvas, Converter={StaticResource MultiplyConverter}, ConverterParameter={StaticResource Half}}"
+                             CenterY="{Binding ActualHeight, ElementName=ControlCanvas, Converter={StaticResource MultiplyConverter}, ConverterParameter={StaticResource Half}}" 
+                             Angle="0"/>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+    </Canvas>
+</UserControl>
