@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\AddOffsetConverter.cs" />
+    <Compile Include="Converters\MultiplyConverter.cs" />
     <Compile Include="GenericValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
