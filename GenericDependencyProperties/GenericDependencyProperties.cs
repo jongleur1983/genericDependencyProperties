@@ -5,7 +5,7 @@ using GenericDependencyProperties.GenericMetadata;
 
 namespace GenericDependencyProperties
 {
-    public static class GenericDependencyProperties
+    public static class GenericDependencyProperty
     {
         #region first level: replace propertyType and ownerType as generic arguments. Problem: typeMeta might be of wrong type
         [Obsolete("use the variants with generic PropertyMetadata instead")]
