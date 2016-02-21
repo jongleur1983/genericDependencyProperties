@@ -21,7 +21,7 @@ namespace GenericConverters
             else
             {
                 var from = (TFrom) System.Convert.ChangeType(value, typeof(TFrom));
-                var param = (TParameter) parameter;
+                var param = (TParameter) System.Convert.ChangeType(parameter, typeof(TParameter));
 
                 return this.Convert(from, param, culture);
             }
