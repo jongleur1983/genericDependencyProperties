@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SampleUserControl\SampleUserControl.xaml.cs">
+    <Compile Include="SampleUserControl.xaml.cs">
       <DependentUpon>SampleUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -70,9 +70,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SampleUserControl\SampleUserControl.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="SampleUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +111,9 @@
       <Project>{07391c51-8b33-4427-94e4-f98765886498}</Project>
       <Name>GenericDependencyProperties</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SampleUserControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
