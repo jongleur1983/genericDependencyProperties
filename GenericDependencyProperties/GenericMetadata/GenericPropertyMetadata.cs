@@ -11,7 +11,8 @@ namespace GenericDependencyProperties.GenericMetadata
         }
 
         /// <summary>
-        /// Initializes a new instance of the PropertyMetadata class with a specified default value for the dependency property that this metadata will be applied to. 
+        /// Initializes a new instance of the PropertyMetadata class with a specified default value 
+        /// for the dependency property that this metadata will be applied to. 
         /// </summary>
         /// <param name="defaultValue"></param>
         public GenericPropertyMetadata(TProperty defaultValue)
@@ -20,7 +21,8 @@ namespace GenericDependencyProperties.GenericMetadata
         }
 
         /// <summary>
-        /// Initializes a new instance of the PropertyMetadata class with the specified default value and PropertyChangedCallback implementation reference.
+        /// Initializes a new instance of the PropertyMetadata class with the specified default value
+        /// and PropertyChangedCallback implementation reference.
         /// </summary>
         /// <param name="defaultValue"></param>
         /// <param name="callback"></param>
