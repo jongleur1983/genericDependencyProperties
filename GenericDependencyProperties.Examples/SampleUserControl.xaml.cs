@@ -10,9 +10,13 @@ namespace GenericDependencyProperties.Examples
     public partial class SampleUserControl : UserControl
     {
         public static DependencyProperty SatelliteRadiusProperty = GenericDependencyProperty.Register(
-            nameof(SatelliteRadius),
+            x => x.SatelliteRadius,
             new GenericPropertyMetadata<double, SampleUserControl>(20)
             );
+
+        public static DependencyProperty FooProperty = GenericDependencyProperty.Register(
+            nameof(SatelliteRadius),
+            new GenericPropertyMetadata<double, SampleUserControl>());
 
         public double SatelliteRadius
         {
