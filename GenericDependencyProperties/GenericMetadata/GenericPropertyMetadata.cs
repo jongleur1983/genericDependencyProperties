@@ -66,7 +66,6 @@ namespace GenericDependencyProperties.GenericMetadata
         /// <summary>
         /// Gets or sets a reference to a PropertyChangedCallback implementation specified in this metadata.
         /// </summary>
-        /// TODO: use a generic PropertyChangedCallback that accepts only the right types
         public GenericPropertyChangedCallback<TOwner, TProperty> PropertyChangedCallback { get; set; }
 
 
