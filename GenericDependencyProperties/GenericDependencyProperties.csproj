@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="DependencyPropertyChangedEventArgs.cs" />
     <Compile Include="GenericCallback\GenericCoerceValueCallback.cs" />
-    <Compile Include="GenericDependencyProperties.cs" />
     <Compile Include="GenericCallback\GenericValidateValueCallback.cs" />
     <Compile Include="GenericDependencyProperty.Helpers.cs" />
+    <Compile Include="GenericDependencyProperty.RegisterAttachedReadOnly.cs" />
+    <Compile Include="GenericDependencyProperty.RegisterReadOnly.cs" />
+    <Compile Include="GenericDependencyProperty.RegisterAttached.cs" />
     <Compile Include="GenericMetadata\GenericFrameworkPropertyMetadata.cs" />
     <Compile Include="GenericMetadata\GenericPropertyMetadata.cs" />
     <Compile Include="GenericMetadata\GenericUIPropertyMetadata.cs" />
