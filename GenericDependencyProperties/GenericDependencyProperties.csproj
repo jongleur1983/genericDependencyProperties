@@ -49,6 +49,7 @@
     <Compile Include="GenericCallback\GenericCoerceValueCallback.cs" />
     <Compile Include="GenericCallback\GenericValidateValueCallback.cs" />
     <Compile Include="GenericDependencyProperty.Helpers.cs" />
+    <Compile Include="GenericDependencyProperty.Register.cs" />
     <Compile Include="GenericDependencyProperty.RegisterAttachedReadOnly.cs" />
     <Compile Include="GenericDependencyProperty.RegisterReadOnly.cs" />
     <Compile Include="GenericDependencyProperty.RegisterAttached.cs" />
