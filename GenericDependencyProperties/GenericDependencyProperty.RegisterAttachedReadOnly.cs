@@ -9,6 +9,6 @@ namespace GenericDependencyProperties
 {
     public partial class GenericDependencyProperty
     {
-        // TODO: implement generic RegisterAttachedReadOnly() overloads
+        // TODO #6 implement generic RegisterAttachedReadOnly() overloads
     }
 }
