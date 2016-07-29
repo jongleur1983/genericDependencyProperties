@@ -52,6 +52,7 @@
     <Compile Include="Converters\MultiplyConverter.cs" />
     <Compile Include="GenericValueConverter.cs" />
     <Compile Include="GenericValueConverter.NoParameter.cs" />
+    <Compile Include="ImprovedStandardConverters\AlternationConverter.cs" />
     <Compile Include="ImprovedStandardConverters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
