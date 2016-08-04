@@ -18,8 +18,8 @@ namespace GenericDependencyProperties
         {
             if (genericCallback == null)
             {
-                // if nothing specific, check for the correct type:
-                return value => value is TProperty;
+                // TODO: if nothing specific, check for the correct type - what could happen (UnsetValue... check before!)
+                return null; // return value => value is TProperty;
             }
             else
             {
