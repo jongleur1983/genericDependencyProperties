@@ -32,18 +32,8 @@ namespace GenericDependencyProperties
             PropertyMetadata typeMetadata,
             ValidateValueCallback<TProperty> validateValueCallback = null)
         {
-            var member = memberExpression.Body as MemberExpression;
-            var propertyName = member?.Member.Name;
-
-            if (propertyName == null)
-            {
-                throw new ArgumentException(
-                    $"the {memberExpression} must be a valid MemberExpression.",
-                    nameof(memberExpression));
-            }
-
             return Register<TProperty, TOwner>(
-                propertyName,
+                GetNameFromExpression(memberExpression),
                 typeMetadata,
                 GetBoxedValidateValueCallback(validateValueCallback));
         }

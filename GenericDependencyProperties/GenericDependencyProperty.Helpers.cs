@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Windows;
 using GenericDependencyProperties.GenericCallback;
 
@@ -25,6 +26,22 @@ namespace GenericDependencyProperties
             {
                 return value => genericCallback((TProperty) value);
             }
+        }
+
+        private static string GetNameFromExpression<TOwner, TProperty>(
+            Expression<Func<TOwner, TProperty>> memberExpression)
+        {
+            var member = memberExpression.Body as MemberExpression;
+            var propertyName = member?.Member.Name;
+
+            if (propertyName == null)
+            {
+                throw new ArgumentException(
+                    $"the {memberExpression} must be a valid MemberExpression.",
+                    nameof(memberExpression));
+            }
+
+            return propertyName;
         }
     }
 }
