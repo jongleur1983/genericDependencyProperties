@@ -48,6 +48,7 @@
     <Compile Include="DependencyPropertyChangedEventArgs.cs" />
     <Compile Include="GenericCallback\GenericCoerceValueCallback.cs" />
     <Compile Include="GenericCallback\GenericValidateValueCallback.cs" />
+    <Compile Include="GenericDependencyProperty.AddOwner.cs" />
     <Compile Include="GenericDependencyProperty.Helpers.cs" />
     <Compile Include="GenericDependencyProperty.Register.cs" />
     <Compile Include="GenericDependencyProperty.RegisterAttachedReadOnly.cs" />
