@@ -39,6 +39,25 @@ namespace GenericDependencyProperties.GenericMetadata
             this.Flags = flags;
         }
 
+        public GenericFrameworkPropertyMetadata(
+            TProperty defaultValue,
+            FrameworkPropertyMetadataOptions flags,
+            GenericPropertyChangedCallback<TOwner, TProperty> propertyChangedCallback)
+            : base(defaultValue, propertyChangedCallback)
+        {
+            this.Flags = flags;
+        }
+
+        public GenericFrameworkPropertyMetadata(
+            TProperty defaultValue,
+            FrameworkPropertyMetadataOptions flags,
+            GenericPropertyChangedCallback<TOwner, TProperty> propertyChangedCallback,
+            GenericCoerceValueCallback<TOwner, TProperty> coerceValueCallback)
+            : base(defaultValue, propertyChangedCallback, coerceValueCallback)
+        {
+            this.Flags = flags;
+        }
+
         public override PropertyMetadata ToNonGeneric()
         {
             return new FrameworkPropertyMetadata(
