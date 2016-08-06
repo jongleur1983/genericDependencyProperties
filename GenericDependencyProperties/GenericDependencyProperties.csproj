@@ -50,6 +50,7 @@
     <Compile Include="GenericCallback\GenericValidateValueCallback.cs" />
     <Compile Include="GenericDependencyProperty.AddOwner.cs" />
     <Compile Include="GenericDependencyProperty.Helpers.cs" />
+    <Compile Include="GenericDependencyProperty.OverrideMetadata.cs" />
     <Compile Include="GenericDependencyProperty.Register.cs" />
     <Compile Include="GenericDependencyProperty.RegisterAttachedReadOnly.cs" />
     <Compile Include="GenericDependencyProperty.RegisterReadOnly.cs" />
