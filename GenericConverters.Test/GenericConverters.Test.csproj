@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BooleanToVisibilityConverterTests.cs" />
+    <Compile Include="GenericAlternationConverterTests.cs" />
     <Compile Include="GenericValueConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
