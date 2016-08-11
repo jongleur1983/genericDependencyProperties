@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddOffsetConverterTests.cs" />
     <Compile Include="BooleanToVisibilityConverterTests.cs" />
     <Compile Include="GenericAlternationConverterTests.cs" />
     <Compile Include="GenericValueConverterTests.cs" />
