@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Windows.Data;
 using GenericConverters.Converters;
 using Xunit;
 
@@ -10,7 +11,18 @@ namespace GenericConverters.Test
         public void Convert()
         {
             var addOffsetConverter = new AddOffsetConverter();
-            Assert.Equal(18, addOffsetConverter.Convert(15, 3, CultureInfo.InvariantCulture));
+            var converterAsValueConverter = addOffsetConverter as IValueConverter;
+            Assert.Equal(
+                converterAsValueConverter.Convert(
+                    15,
+                    typeof(double),
+                    3,
+                    CultureInfo.InvariantCulture),
+                addOffsetConverter.Convert(
+                    15,
+                    3,
+                    CultureInfo.InvariantCulture));
+            
         }
 
         [Theory]
@@ -24,15 +36,17 @@ namespace GenericConverters.Test
         [InlineData(24, 11)]
         [InlineData(10, 211)]
         [InlineData(9, 121)]
-        public void ConvertTheory(int value, int offset)
+        public void ConvertTheory(int value, double offset)
         {
             var addOffsetConverter = new AddOffsetConverter();
+            var nonGenericConverter = addOffsetConverter as IValueConverter;
+
             Assert.Equal(
-                value + offset, 
+                nonGenericConverter.Convert(value, typeof(double), offset, CultureInfo.InvariantCulture), 
                 addOffsetConverter.Convert(value, offset, CultureInfo.InvariantCulture));
             Assert.Equal(
-                value, 
-                addOffsetConverter.ConvertBack(value + offset, offset, CultureInfo.InvariantCulture));
+                nonGenericConverter.ConvertBack(value, typeof(double), offset, CultureInfo.InvariantCulture), 
+                addOffsetConverter.ConvertBack(value, offset, CultureInfo.InvariantCulture));
         }
     }
 }
