@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 using GenericConverters.ImprovedStandardConverters;
 using Xunit;
 
@@ -18,7 +19,9 @@ namespace GenericConverters.Test
             int index)
         {
             var converter = new AlternationConverter<int>();
+            var asNonGeneric = converter as IValueConverter;
             Assert.Equal(0, converter.Convert(index, CultureInfo.InvariantCulture));
+            Assert.Equal(0, asNonGeneric.Convert(index, typeof(int), null, CultureInfo.InvariantCulture));
         }
 
         [Theory]
@@ -34,7 +37,11 @@ namespace GenericConverters.Test
             var converter = new AlternationConverter<int>();
             converter.Values.Add(42);
 
+            var asNonGeneric = converter as IValueConverter;
+
             Assert.Equal(42, converter.Convert(index, CultureInfo.InvariantCulture));
+
+            Assert.Equal(42, asNonGeneric.Convert(index, typeof(int), null, CultureInfo.InvariantCulture));
         }
 
         [Theory]
@@ -52,7 +59,10 @@ namespace GenericConverters.Test
             converter.Values.Add(true);
             converter.Values.Add(false);
 
+            var asNonGeneric = converter as IValueConverter;
+
             Assert.Equal(expected, converter.Convert(index, CultureInfo.InvariantCulture));
+            Assert.Equal(expected, asNonGeneric.Convert(index, typeof(bool), null, CultureInfo.InvariantCulture));
         }
 
         [Theory]
@@ -73,9 +83,15 @@ namespace GenericConverters.Test
             converter.Values.Add(Visibility.Collapsed);
             converter.Values.Add(Visibility.Hidden);
 
+            var asNonGeneric = converter as IValueConverter;
+
             Assert.Equal(
                 expected,
                 converter.Convert(index, CultureInfo.InvariantCulture));
+
+            Assert.Equal(
+                expected,
+                asNonGeneric.Convert(index, typeof(Visibility), null, CultureInfo.InvariantCulture));
         }
 
         [Theory]
