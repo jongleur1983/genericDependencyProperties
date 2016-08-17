@@ -65,7 +65,7 @@ namespace GenericConverters.Test
         [InlineData(Visibility.Collapsed, BooleanToVisibilityConverter.BooleanToVisibilityMapping.VisibleHidden)]
         [InlineData(Visibility.Hidden, BooleanToVisibilityConverter.BooleanToVisibilityMapping.VisibleCollapsed)]
         [InlineData(Visibility.Hidden, BooleanToVisibilityConverter.BooleanToVisibilityMapping.CollapsedVisible)]
-        public void ContertBackThrowsCorrect(
+        public void ConvertBackThrowsCorrect(
             Visibility input,
             BooleanToVisibilityConverter.BooleanToVisibilityMapping parameter)
         {
