@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericDependencyProperties", "GenericDependencyProperties\GenericDependencyProperties.csproj", "{07391C51-8B33-4427-94E4-F98765886498}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericConverters.Test", "GenericConverters.Test\GenericConverters.Test.csproj", "{9C9F7C1F-AEA1-4DCC-8F3A-5962CDC4824B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericDependencyProperties.Examples", "GenericDependencyProperties.Examples\GenericDependencyProperties.Examples.csproj", "{DC203ECD-7DD0-4F5F-A07A-C3371B50E0E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericDependencyProperties.Test", "GenericDependencyProperties.Test\GenericDependencyProperties.Test.csproj", "{9FA3A074-58E3-478E-B44D-137A7BDCF6B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DC203ECD-7DD0-4F5F-A07A-C3371B50E0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC203ECD-7DD0-4F5F-A07A-C3371B50E0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC203ECD-7DD0-4F5F-A07A-C3371B50E0E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FA3A074-58E3-478E-B44D-137A7BDCF6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA3A074-58E3-478E-B44D-137A7BDCF6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA3A074-58E3-478E-B44D-137A7BDCF6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA3A074-58E3-478E-B44D-137A7BDCF6B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
